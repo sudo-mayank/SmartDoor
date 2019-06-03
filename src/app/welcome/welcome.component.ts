@@ -8,8 +8,15 @@ import { WelcomeDataService } from '../service/data/welcome-data.service';
   styleUrls: ['./welcome.component.css']
 })
 export class WelcomeComponent implements OnInit {
-
+   HEROES = [
+    {id: 1, name:'Superman'},
+    {id: 2, name:'Batman'},
+    {id: 5, name:'BatGirl'},
+    {id: 3, name:'Robin'},
+    {id: 4, name:'Flash'}
+  ];
   welcomemessage: string ;
+  lists: any[] ;
   message = 'Some Message Here';
   name = '';
 
@@ -20,7 +27,7 @@ export class WelcomeComponent implements OnInit {
   ngOnInit() {
     console.log(this.message);
     this.name = this.route.snapshot.params.name;
-    console.log(this.name);
+    // console.log(this.getdcdlists());  
   }
 
   getWelcomeMessage() {
@@ -32,12 +39,20 @@ export class WelcomeComponent implements OnInit {
   }
 
   handleSuccessFulResponse(response) {
-    this.welcomemessage = (response.message);
+    this.welcomemessage = (response);
+    this.lists = (response.list);
   }
 
   handleErrorResponse(error) {
     this.welcomemessage = (error.error.message);
   }
 
+  getdcdlists() {
+    this.service.getListDCDs().subscribe(
+      (response) => this.handleSuccessFulResponse(response),
+     err => this.handleErrorResponse(err),
+    () => console.log("getdcdlists working..")
+    );
+  }
 
 }

@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-
 import { AppComponent } from './app.component';
 import { SigninComponent } from './signin/signin.component';
 import { ErrorComponent } from './error/error.component';
@@ -29,7 +28,7 @@ import { WelcomeComponent } from './welcome/welcome.component';
     FormsModule,
     AppRoutingModule,
     RouterModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [RouteGuardService],
   bootstrap: [AppComponent]
