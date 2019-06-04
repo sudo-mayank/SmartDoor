@@ -12,6 +12,10 @@ import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { RouteGuardService } from './service/route-guard.service';
 import { WelcomeComponent } from './welcome/welcome.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AppNavComponent } from './app-nav/app-nav.component';
+import { LayoutModule } from '@angular/cdk/layout';
+import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule } from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -21,7 +25,8 @@ import { WelcomeComponent } from './welcome/welcome.component';
     FooterComponent,
     MenuComponent,
     LogoutComponent,
-    WelcomeComponent
+    WelcomeComponent,
+    AppNavComponent
   ],
   imports: [
     BrowserModule,
@@ -29,6 +34,13 @@ import { WelcomeComponent } from './welcome/welcome.component';
     AppRoutingModule,
     RouterModule,
     HttpClientModule,
+    BrowserAnimationsModule,
+    LayoutModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatListModule,
   ],
   providers: [RouteGuardService],
   bootstrap: [AppComponent]

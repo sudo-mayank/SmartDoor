@@ -1,13 +1,10 @@
 <h1>Welcome!</h1>
 <div class="container">
-    {{name}} You can manage your todos  <a routerLink="/todos">here</a>
+    {{name}}
 </div>
 
-<div class="container">
-    Click here to get customized welcome message
-    <button (click)="getdcdlists()" class="btn">Get Welcome Message</button>
-</div>
-
-<div class="container" *ngIf="handleSuccessFulResponse">
-    <h5 *ngFor="let ToDo of lists">{{ToDo.name}}</h5>
+<div class="container-fluid" *ngIf="handleSuccessFulResponse">
+    <div *ngFor="let ToDo of lists" class="mt-4 col-md-4">
+            <button class="btn btn-primary">{{ToDo.name}}</button>
+    </div>
 </div>

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { API_URL } from '../app.constants';
+import { WelcomeDataService } from './data/welcome-data.service';
 
 export const TOKEN = 'token';
 export const AUTHENTICATED_USER = 'authenticaterUser';
@@ -11,7 +12,8 @@ export const AUTHENTICATED_USER = 'authenticaterUser';
 })
 export class AuthenticationService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,
+              private service: WelcomeDataService) { }
 
   executeJWTAuthenticationService(username, password) {
 
@@ -33,7 +35,7 @@ export class AuthenticationService {
   }
   getAuthenticatedToken() {
     if (this.getAuthenticatedUser()) {
-    return sessionStorage.getItem(TOKEN);
+      return sessionStorage.getItem(TOKEN);
     }
   }
 

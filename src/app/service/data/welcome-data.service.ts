@@ -1,6 +1,12 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { API_URL,API_URL_1 } from 'src/app/app.constants';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { API_URL } from 'src/app/app.constants';
+
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Content-Type':  'application/json'
+  })
+};
 
 @Injectable({
   providedIn: 'root'
@@ -9,8 +15,8 @@ export class WelcomeDataService {
 
   constructor(private http: HttpClient) { }
 
-  retrieveUserData() {
-    return this.http.get<any>(`${API_URL}/auth/signIn`);
+  logout() {
+    return this.http.post<any>(`${API_URL}/auth/logout`, httpOptions);
   }
 
   getListDCDs() {
