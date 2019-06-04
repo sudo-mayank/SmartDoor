@@ -22,12 +22,12 @@ export class SigninComponent implements OnInit {
   ngOnInit() {
   }
 
-  handleJWTAuthLogin(email,password) {
-    console.log(email,password);
+  handleJWTAuthLogin(email, password) {
+    console.log(email, password);
     this.authenticationService.executeJWTAuthenticationService(this.email, this.password)
          .subscribe(
            data => {console.log(data);
-                    this.router.navigate(['welcome', data.username]);
+                    this.router.navigate(['welcome']);
                     this.invalidLogin = false;
            },
            error => {

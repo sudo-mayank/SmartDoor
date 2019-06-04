@@ -1,20 +1,16 @@
 <div id="wrapper">
-
     <!-- Sidebar -->
     <div id="sidebar-wrapper">
         <ul class="sidebar-nav">
-            <!-- <li class="sidebar-brand">
-                <a href="#">
-                    Smartdoor
-                </a>
-            </li> -->
-                <div *ngIf="handleSuccessFulResponse">
-                    <button ng-click="hideShow=(hideShow ? false : true)" *ngFor="let list of lists" (click)="getadslists(list.id)" type="button" class="mt-2 btn btn-primary dropdown-toggle" data-toggle="dropdown">
-                        {{list.name}}
-                    </button>
-                      <a ng-if="hideShow" *ngIf="handleSuccessFulResponse1" class="dropdown-item" href="#">Link 1</a>
-                    
+            <div *ngFor="let list of lists" class="col mt-5 pt-5">
+                <div ngbDropdown class="d-inline-block">
+                  <button (click)="getadslist(list.id)" class="btn btn-warning" id="dropdownBasic1" ngbDropdownToggle>{{list.name}}</button>
+                  <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                    <button *ngFor="let ads of adslists" ngbDropdownItem>{{ads.name}}</button>
+                    <button *ngIf="adslists.length == 0" ngbDropdownItem>No Record</button>
                   </div>
+                </div>
+              </div>
         </ul>
     </div>
     <!-- /#sidebar-wrapper -->
@@ -24,10 +20,9 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1>Simple Sidebar</h1>
+                    <h1>Main Dashboard</h1>
                     <p>This template has a responsive menu toggling system. The menu will appear collapsed on smaller screens, and will appear non-collapsed on larger screens. When toggled using the button below, the menu will appear/disappear. On small screens, the page content will be pushed off canvas.</p>
                     <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p>
-                    <a href="#menu-toggle" class="btn btn-warning" id="menu-toggle">Toggle Menu</a>
                 </div>
             </div>
         </div>

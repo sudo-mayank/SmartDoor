@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { WelcomeDataService } from '../service/data/welcome-data.service';
 import { adslist } from '../service/classes/adslist';
-declare var $:any;
+import { map, concatMap, filter } from 'rxjs/operators';
 @Component({
   selector: 'app-welcome',
   templateUrl: './welcome.component.html',
@@ -10,11 +10,11 @@ declare var $:any;
 })
 export class WelcomeComponent implements OnInit {
   welcomemessage: string ;
-  lists: any[] ;
-  adslists: adslist[];
+  lists: any[] = [];
+  adslists: adslist[] = [];
   message = 'Some Message Here';
   name = '';
-  Id: any;
+  Id: any = '';
 
   constructor(private service: WelcomeDataService,
               private route: ActivatedRoute
@@ -24,28 +24,12 @@ export class WelcomeComponent implements OnInit {
     console.log(this.message);
     this.name = this.route.snapshot.params.name;
     this.getdcdlists();
-
-    this.service.getListADs()
-    .subscribe(
-      data=>{
-        this.adslists = data;
-      }
-    )
   }
 
   handleSuccessFulResponse(response) {
     this.welcomemessage = (response);
     this.lists = (response.list);
     this.adslists = (response.list);
-  }
-
-  handleSuccessFulResponse1(response,Id) {
-    this.welcomemessage = (response);
-    this.lists = (response.list);
-    this.adslists = (response.list);
-    this.adslists.filter(function(conte) {
-      return conte.dcdId == Id;
-    });
   }
 
   handleErrorResponse(error) {
@@ -60,12 +44,17 @@ export class WelcomeComponent implements OnInit {
     );
   }
 
-  getadslists(Id) { console.log(Id);
-    this.service.getListADs().subscribe(
-      (response) =>this.handleSuccessFulResponse1(response,Id),
-     err => this.handleErrorResponse(err),
-    () => console.log('getdcdlists working..')
-    );
+  getadslist(id) {
+    return this.service.getListADs()
+      .subscribe(response => {
+        this.adslists = response.list
+        .filter(adslists => (adslists.dcdId) === id );
+        console.log(response);
+        console.log(this.adslists);
+      },
+      errors => {
+         console.log(errors);
+      });
   }
 
 }

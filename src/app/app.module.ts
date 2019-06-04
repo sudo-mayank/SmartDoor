@@ -16,7 +16,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppNavComponent } from './app-nav/app-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule } from '@angular/material';
-import { NgxPopper } from 'angular-popper';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {NgbPaginationModule, NgbAlertModule} from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,9 @@ import { NgxPopper } from 'angular-popper';
     AppNavComponent
   ],
   imports: [
+    NgbPaginationModule,
+    NgbAlertModule,
+    NgbModule,
     BrowserModule,
     FormsModule,
     AppRoutingModule,
@@ -42,7 +46,6 @@ import { NgxPopper } from 'angular-popper';
     MatSidenavModule,
     MatIconModule,
     MatListModule,
-    NgxPopper,
   ],
   providers: [RouteGuardService],
   bootstrap: [AppComponent]

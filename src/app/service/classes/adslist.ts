@@ -1,3 +1,4 @@
+// tslint:disable-next-line:class-name
 export class adslist {
     id: number;
     version: number;

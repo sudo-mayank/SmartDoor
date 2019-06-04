@@ -9,7 +9,7 @@ import { ErrorComponent } from './error/error.component';
 const routes: Routes = [
   {path: '', component: SigninComponent},
   {path: 'login', component: SigninComponent},
-  {path: 'welcome/:name', component: WelcomeComponent, canActivate: [RouteGuardService]},
+  {path: 'welcome', component: WelcomeComponent, canActivate: [RouteGuardService]},
   {path: 'logout', component: LogoutComponent, canActivate: [RouteGuardService]},
   {path: '**', component: ErrorComponent},
 ];
