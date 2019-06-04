@@ -9,7 +9,7 @@ import { AuthenticationService } from '../service/authentication.service';
 })
 export class SigninComponent implements OnInit {
 
-  username = '';
+  email = '';
   password = '';
   errorMessage = 'Invalid Credentials';
   invalidLogin = false;
@@ -22,8 +22,9 @@ export class SigninComponent implements OnInit {
   ngOnInit() {
   }
 
-  handleJWTAuthLogin() {
-    this.authenticationService.executeJWTAuthenticationService(this.username, this.password)
+  handleJWTAuthLogin(email,password) {
+    console.log(email,password);
+    this.authenticationService.executeJWTAuthenticationService(this.email, this.password)
          .subscribe(
            data => {console.log(data);
                     this.router.navigate(['welcome', data.username]);
