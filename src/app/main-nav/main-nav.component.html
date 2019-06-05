@@ -1,0 +1,34 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav *ngIf="authenticationService.isUserLoggedIn()" #drawer class="sidenav" fixedInViewport
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'" [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    [opened]="(isHandset$ | async) === false">
+    <mat-toolbar color="primary">Menu</mat-toolbar>
+    <mat-nav-list>
+      <div *ngFor="let list of lists" class="mt-5 ml-3">
+        <div ngbDropdown class="d-inline-block">
+          <button mat-raised-button (click)="getadslist(list.id)" color="primary" id="dropdownBasic1"
+            ngbDropdownToggle>{{list.name}}</button>
+          <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+            <button mat-button *ngFor="let ads of adslists" ngbDropdownItem>{{ads.name}}</button>
+            <button mat-button *ngIf="adslists.length == 0" ngbDropdownItem>No Record</button>
+          </div>
+        </div>
+      </div>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span>Smartdoor</span>
+      <span class="spacer"></span>
+      <a *ngIf="authenticationService.isUserLoggedIn()" mat-list-item routerLink="/dashboard">Home</a>
+      <a *ngIf="!authenticationService.isUserLoggedIn()" mat-list-item routerLink="/login">Login</a>
+      <a *ngIf="authenticationService.isUserLoggedIn()" mat-list-item routerLink="/logout">Logout</a>
+    </mat-toolbar>
+    <!-- Add Content Here -->
+    <ng-content></ng-content>
+  </mat-sidenav-content>
+</mat-sidenav-container>
