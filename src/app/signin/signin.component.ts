@@ -27,7 +27,7 @@ export class SigninComponent implements OnInit {
     this.authenticationService.executeJWTAuthenticationService(this.email, this.password)
          .subscribe(
            data => {console.log(data);
-                    this.router.navigate(['welcome']);
+                    this.router.navigate(['dashboard']);
                     this.invalidLogin = false;
            },
            error => {
