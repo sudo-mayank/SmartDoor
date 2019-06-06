@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, FormControl, ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { SigninComponent } from './signin/signin.component';
 import { ErrorComponent } from './error/error.component';
@@ -25,7 +25,9 @@ import { MainNavComponent } from './main-nav/main-nav.component';
 import {MatCardModule} from '@angular/material/card';
 import {MatTreeModule} from '@angular/material/tree';
 import {MatExpansionModule} from '@angular/material/expansion';
-import {MatFormFieldModule, MatFormFieldControl} from '@angular/material/form-field';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import { RightsidenavComponent } from './rightsidenav/rightsidenav.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +42,7 @@ import {MatFormFieldModule, MatFormFieldControl} from '@angular/material/form-fi
     BatterySettingsComponent,
     CabinetSettingsComponent,
     MainNavComponent,
+    RightsidenavComponent,
   ],
   imports: [
     NgbPaginationModule,
@@ -63,8 +66,10 @@ import {MatFormFieldModule, MatFormFieldControl} from '@angular/material/form-fi
     MatFormFieldModule,
     MatSelectModule,
     MatCheckboxModule,
-    MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatSlideToggleModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [RouteGuardService],
   bootstrap: [AppComponent]

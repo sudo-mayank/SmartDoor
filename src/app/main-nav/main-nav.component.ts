@@ -68,4 +68,8 @@ export class MainNavComponent implements OnInit {
         });
   }
 
+  toggle(){
+    return true;
+  }
+
 }
