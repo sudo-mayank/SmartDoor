@@ -1,3 +1,7 @@
-.rightnav{
-    
+.right-nav{
+    height: 200%;
+}
+
+ul li {
+    margin-top: 40px;
 }

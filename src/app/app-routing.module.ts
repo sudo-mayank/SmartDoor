@@ -9,11 +9,13 @@ import { InputSettingsComponent } from './form/input-settings/input-settings.com
 import { OutputSettingsComponent } from './form/output-settings/output-settings.component';
 import { BatterySettingsComponent } from './form/battery-settings/battery-settings.component';
 import { CabinetSettingsComponent } from './form/cabinet-settings/cabinet-settings.component';
+import { InputComponent } from './form/input/input.component';
 
 const routes: Routes = [
   {path: '', component: SigninComponent},
   {path: 'login', component: SigninComponent},
   {path: 'dashboard', component: WelcomeComponent, canActivate: [RouteGuardService]},
+  {path: 'input', component: InputComponent, canActivate: [RouteGuardService]},
   {path: 'inputsettings', component: InputSettingsComponent, canActivate: [RouteGuardService]},
   {path: 'outputsettings', component: OutputSettingsComponent, canActivate: [RouteGuardService]},
   {path: 'batterysettings', component: BatterySettingsComponent, canActivate: [RouteGuardService]},

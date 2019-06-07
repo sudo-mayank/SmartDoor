@@ -1,13 +1,12 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl, FormBuilder, Validators } from '@angular/forms';
+import { Component } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-input-settings',
-  templateUrl: './input-settings.component.html',
-  styleUrls: ['./input-settings.component.css']
+  selector: 'app-input',
+  templateUrl: './input.component.html',
+  styleUrls: ['./input.component.css']
 })
-export class InputSettingsComponent {
-
+export class InputComponent {
   addressForm = this.fb.group({
     company: null,
     firstName: [null, Validators.required],
@@ -22,7 +21,7 @@ export class InputSettingsComponent {
     shipping: ['free', Validators.required]
   });
 
-  hasUnitNumber = false; 
+  hasUnitNumber = false;
 
   states = [
     {name: 'Alabama', abbreviation: 'AL'},

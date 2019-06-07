@@ -14,7 +14,7 @@ import { WelcomeComponent } from './welcome/welcome.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule,
-         MatSelectModule, MatCheckboxModule, MatInputModule  } from '@angular/material';
+         MatSelectModule, MatCheckboxModule, MatInputModule, MatRadioModule  } from '@angular/material';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {NgbPaginationModule, NgbAlertModule} from '@ng-bootstrap/ng-bootstrap';
 import { InputSettingsComponent } from './form/input-settings/input-settings.component';
@@ -28,6 +28,7 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { RightsidenavComponent } from './rightsidenav/rightsidenav.component';
+import { InputComponent } from './form/input/input.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { RightsidenavComponent } from './rightsidenav/rightsidenav.component';
     CabinetSettingsComponent,
     MainNavComponent,
     RightsidenavComponent,
+    InputComponent,
   ],
   imports: [
     NgbPaginationModule,
@@ -70,6 +72,7 @@ import { RightsidenavComponent } from './rightsidenav/rightsidenav.component';
     MatSlideToggleModule,
     FormsModule,
     ReactiveFormsModule,
+    MatRadioModule,
   ],
   providers: [RouteGuardService, MainNavComponent],
   bootstrap: [AppComponent]
