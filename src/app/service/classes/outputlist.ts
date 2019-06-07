@@ -1,4 +1,5 @@
-export class outputlist{
+// tslint:disable-next-line:class-name
+export class outputlist {
     id: number;
     adId: number;
     type: number;

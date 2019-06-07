@@ -69,9 +69,9 @@ import { RightsidenavComponent } from './rightsidenav/rightsidenav.component';
     MatInputModule,
     MatSlideToggleModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
-  providers: [RouteGuardService],
+  providers: [RouteGuardService, MainNavComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

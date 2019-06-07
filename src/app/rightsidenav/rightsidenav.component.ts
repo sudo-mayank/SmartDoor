@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SharedDataService } from '../service/data/shared-data.service';
 
 @Component({
   selector: 'app-rightsidenav',
@@ -7,9 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RightsidenavComponent implements OnInit {
 
-  constructor() { }
+  datalist: any[] = [];
+  constructor(private shareddata: SharedDataService) { }
 
   ngOnInit() {
+    console.log('hello');
+    this.shareddata.currentlist.subscribe(datalist => this.datalist = datalist);
+    console.log(this.datalist + ' ' + 'This message from main');
+  }
+
+  getlog() {
+    console.log('hello');
+    this.shareddata.currentlist.subscribe(datalist => this.datalist = datalist);
+    console.log(this.datalist);
   }
 
 }

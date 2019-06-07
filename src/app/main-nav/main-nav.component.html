@@ -9,7 +9,7 @@
           <button mat-raised-button (click)="getadslist(list.id)" color="primary" id="dropdownBasic1"
             ngbDropdownToggle>{{list.name}}</button>
           <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-            <button mat-button *ngFor="let ads of adslists" ngbDropdownItem>{{ads.name}}</button>
+            <button mat-button (click)="getmenulist(ads.id,list.id)" *ngFor="let ads of adslists" ngbDropdownItem>{{ads.name}}</button>
             <button mat-button *ngIf="adslists.length == 0" ngbDropdownItem>No Record</button>
           </div>
         </div>

@@ -6,6 +6,7 @@ import { AuthenticationService } from '../service/authentication.service';
 import { WelcomeDataService } from '../service/data/welcome-data.service';
 import { adslist } from '../service/classes/adslist';
 import { ActivatedRoute } from '@angular/router';
+import { SharedDataService } from '../service/data/shared-data.service';
 
 @Component({
   selector: 'app-main-nav',
@@ -20,6 +21,7 @@ export class MainNavComponent implements OnInit {
   message = 'Some Message Here';
   name = '';
   Id: any = '';
+  datalist: any[] = [];
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
@@ -29,6 +31,7 @@ export class MainNavComponent implements OnInit {
   constructor(private breakpointObserver: BreakpointObserver,
               private authenticationService: AuthenticationService,
               private service: WelcomeDataService,
+              private shareddata: SharedDataService,
               private route: ActivatedRoute) { }
 
   ngOnInit() {
@@ -68,8 +71,14 @@ export class MainNavComponent implements OnInit {
         });
   }
 
-  toggle(){
+  toggle() {
     return true;
+  }
+
+  getmenulist(adsid, dcdid) {
+    this.datalist = [adsid, dcdid];
+    this.shareddata.changedata(this.datalist);
+    console.log('data sent');
   }
 
 }
