@@ -1,50 +1,87 @@
-<mat-card class="mt-4">
-    <mat-card-title>Battery Setting</mat-card-title>
-  <mat-card-content>
-      <mat-list>
-          <mat-list-item>
-              <mat-form-field>
-                  <mat-slide-toggle color="primary">Enabled</mat-slide-toggle>
-              </mat-form-field>
-          </mat-list-item>
-          <mat-list-item>
-              <mat-divider></mat-divider>
-                <mat-form-field>
-                    <mat-label>Charge Type</mat-label>
-                    <mat-select [(ngModel)]="selectedValue" name="food">
-                      <mat-option *ngFor="let food of foods" [value]="food.value">
-                        {{food.viewValue}}
-                      </mat-option>
-                    </mat-select>
-                  </mat-form-field>
-            </mat-list-item>
-            <mat-list-item>
-                <mat-divider></mat-divider>
-                  <mat-form-field>
-                      <mat-label>Health Check</mat-label>
-                      <mat-select [(ngModel)]="selectedValue" name="food">
-                        <mat-option *ngFor="let food of foods" [value]="food.value">
-                          {{food.viewValue}}
-                        </mat-option>
-                      </mat-select>
-                    </mat-form-field>
-              </mat-list-item>
-            <mat-list-item class="mt-4">
-                <mat-form-field appearance="outline">
-                    <mat-label>Health Check</mat-label>
-                    <input type="time" matInput placeholder="Timer" value="">
-                  </mat-form-field>
-        </mat-list-item>
-        <mat-list-item class="mt-4">
-            <mat-form-field appearance="outline">
-                <mat-label>Health Check Time</mat-label>
-                <input type="time" matInput placeholder="Timer" value="">
-              </mat-form-field>
-        </mat-list-item>
-        </mat-list>
-        <mat-divider></mat-divider>
-        <div class="offset-6 mt-1">    
-          <button color="primary" mat-raised-button>Save</button>
-        </div>
-  </mat-card-content>
-</mat-card>
+<div class="container">
+    <div class="row">
+      <div class="col-md-12">
+          <div class="card mt-2 p-2">
+              <div class="card-header">
+                Battery Settings
+              </div>
+              <div class="body">
+                <form>
+                    <div class="form-group row text-center mt-2">
+                        <h6 class="card-subtitle mb-2 col-sm-12 col-form-label">Battery Settings</h6>
+                    </div>
+
+                    <div class="from group row mt-2">
+                        <label class="col-sm-9 col-form-label" for="batterycapacity">Battery Capacity</label>
+                        <div class="col-sm-2">
+                            <input type="number" class="form-control" id="batterycapacity" placeholder="12">
+                        </div>
+                        <div class="col-sm-1 m-0 p-0">
+                            <span>Ah</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group row mt-2">  
+                        <label for="trigger_action" class="col-sm-9 col-form-label">Charge type</label>
+                        <div class="col-sm-3">
+                        <select id="trigger_action" class="form-control">
+                            <option selected>Accelerated</option>
+                            <option>...</option>
+                          </select>
+                        </div>  
+                        </div>
+
+                        <div class="form-group row">  
+                            <label for="trigger_action" class="col-sm-9 col-form-label">Helth Check</label>
+                            <div class="col-sm-3">
+                            <select id="trigger_action" class="form-control">
+                                <option selected>Monthly</option>
+                                <option>...</option>
+                              </select>
+                            </div>  
+                            </div>
+
+                            <div class="from-group row">
+                                <label class="col-sm-9 col-form-label" for="HelthCheckTime">Helth Check Time</label>
+                                <div class="col-sm-3">
+                                    <input type="time" class="form-control" id="HelthCheckTime" placeholder="Helth Check Time">
+                                </div>
+                            </div>
+
+                            <div class="from-group row mt-2">
+                                <label class="col-sm-8 col-form-label" for="BatteryInstalledTime">Battery Installed Time</label>
+                                <div class="col-sm-4">
+                                    <input type="datetime-local" class="form-control" id="BatteryInstalledTime" placeholder="Battery Installed Time"
+                                    min="2018-06-07T00:00" max="2018-06-14T00:00">
+                                </div>
+                            </div>
+
+                    <div class="form-group row mt-2">
+                        <label for="checkbox" class="col-sm-9 col-form-label">New Battery Installed</label>
+                        <div class="col-sm-3">
+                            <label class="switch" for="checkbox">
+                                <input class="form-control" type="checkbox" id="checkbox" />
+                                <div class="slider round"></div>
+                            </label>
+                        </div>
+                      </div>
+  
+                        <div class="from group row">
+                            <label class="col-sm-9 col-form-label" for="expiration">Expiration Reminder</label>
+                            <div class="col-sm-2 m-0">
+                                <input type="number" class="form-control" id="expiration" placeholder="30">
+                            </div>
+                            <div class="col-sm-1 m-0 p-0">
+                                <span>months</span>
+                            </div>
+                        </div>
+  
+                        <div class="form group row justify-content-center">
+                          <button mat-raised-button color="primary">Save</button>
+                        </div>
+                </form>
+              </div>
+            </div>
+      </div>
+    </div>
+  </div>

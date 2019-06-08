@@ -1,50 +1,60 @@
-<mat-card class="mt-4">
-    <mat-card-title>Battery Setting</mat-card-title>
-  <mat-card-content>
-      <mat-list>
-          <mat-list-item>
-              <mat-form-field>
-                  <mat-slide-toggle color="primary">Enabled</mat-slide-toggle>
-              </mat-form-field>
-          </mat-list-item>
-          <mat-list-item>
-              <mat-divider></mat-divider>
-                <mat-form-field>
-                    <mat-label>Charge Type</mat-label>
-                    <mat-select [(ngModel)]="selectedValue" name="food">
-                      <mat-option *ngFor="let food of foods" [value]="food.value">
-                        {{food.viewValue}}
-                      </mat-option>
-                    </mat-select>
-                  </mat-form-field>
-            </mat-list-item>
-            <mat-list-item>
-                <mat-divider></mat-divider>
-                  <mat-form-field>
-                      <mat-label>Health Check</mat-label>
-                      <mat-select [(ngModel)]="selectedValue" name="food">
-                        <mat-option *ngFor="let food of foods" [value]="food.value">
-                          {{food.viewValue}}
-                        </mat-option>
-                      </mat-select>
-                    </mat-form-field>
-              </mat-list-item>
-            <mat-list-item class="mt-4">
-                <mat-form-field appearance="outline">
-                    <mat-label>Health Check</mat-label>
-                    <input type="time" matInput placeholder="Timer" value="">
-                  </mat-form-field>
-        </mat-list-item>
-        <mat-list-item class="mt-4">
-            <mat-form-field appearance="outline">
-                <mat-label>Health Check Time</mat-label>
-                <input type="time" matInput placeholder="Timer" value="">
-              </mat-form-field>
-        </mat-list-item>
-        </mat-list>
-        <mat-divider></mat-divider>
-        <div class="offset-6 mt-1">    
-          <button color="primary" mat-raised-button>Save</button>
-        </div>
-  </mat-card-content>
-</mat-card>
+<div class="container">
+    <div class="row">
+      <div class="col-md-12">
+          <div class="card mt-2 p-2">
+              <div class="card-header">
+                Cabinate Settings
+              </div>
+              <div class="body">
+                <form>
+                    <div class="form-group row text-center mt-2">
+                        <h6 class="card-subtitle mb-2 col-sm-12 col-form-label">Display Settings</h6>
+                    </div>
+
+                    <div class="from group row mt-2">
+                        <label class="col-sm-9 col-form-label" for="batterycapacity">Display Intensity</label>
+                        <div class="col-sm-3">
+                            <input type="range" id="batterycapacity" name="cowbell" min="0" max="100" value="90" step="10">
+                        </div>
+                    </div>
+
+                    <div class="form-group row mt-2">  
+                        <label for="trigger_action" class="col-sm-9 col-form-label">Scroll Option</label>
+                        <div class="col-sm-3">
+                        <select id="trigger_action" class="form-control">
+                            <option selected>No Scroll</option>
+                            <option>...</option>
+                          </select>
+                        </div>  
+                        </div>
+
+                            <div class="from-group row">
+                                <label class="col-sm-9 col-form-label" for="scrollscreentime">Screen Scroll Time</label>
+                                <div class="col-sm-3">
+                                    <input type="time" class="form-control" id="scrollscreentime" placeholder="">
+                                </div>
+                            </div>
+
+                            <div class="form-group row text-center mt-2">
+                                <h6 class="card-subtitle mb-2 col-sm-12 col-form-label">Alram Settings</h6>
+                            </div>
+
+                            <div class="form-group row mt-2">  
+                                <label for="trigger_action" class="col-sm-9 col-form-label">Scroll Option</label>
+                                <div class="col-sm-3">
+                                <select id="trigger_action" class="form-control">
+                                    <option selected>No Scroll</option>
+                                    <option>...</option>
+                                  </select>
+                                </div>  
+                              </div>
+  
+                        <div class="form group row justify-content-center">
+                          <button mat-raised-button color="primary">Save</button>
+                        </div>
+                </form>
+              </div>
+            </div>
+      </div>
+    </div>
+  </div>
