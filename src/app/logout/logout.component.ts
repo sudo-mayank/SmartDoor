@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from '../service/authentication.service';
 import { WelcomeDataService } from '../service/data/welcome-data.service';
+import { USER_LIST_CHECK } from '../main-nav/main-nav.component';
 
 @Component({
   selector: 'app-logout',
@@ -14,6 +15,7 @@ export class LogoutComponent implements OnInit {
 
   ngOnInit() {
     this.authenticated.logout();
+    sessionStorage.removeItem(USER_LIST_CHECK);
     this.service.logout().subscribe(
       (response) => console.log(response.text),
       err => console.log(err),

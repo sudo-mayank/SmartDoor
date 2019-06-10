@@ -1,87 +1,99 @@
 <div class="container">
     <div class="row">
-      <div class="col-md-12">
-          <div class="card mt-2 p-2">
-              <div class="card-header">
-                Battery Settings
-              </div>
-              <div class="body">
-                <form>
-                    <div class="form-group row text-center mt-2">
-                        <h6 class="card-subtitle mb-2 col-sm-12 col-form-label">Battery Settings</h6>
-                    </div>
+        <div class="col-md-12">
+            <div class="card mt-2 p-2">
+                <div class="card-header">
+                    Battery Settings
+                </div>
+                <div class="body">
+                    <div class="alert alert-warning" *ngIf="batteryForm.dirty && batteryForm.invalid">Please enter the
+                        valid data</div>
 
-                    <div class="from group row mt-2">
-                        <label class="col-sm-9 col-form-label" for="batterycapacity">Battery Capacity</label>
-                        <div class="col-sm-2">
-                            <input type="number" class="form-control" id="batterycapacity" placeholder="12">
-                        </div>
-                        <div class="col-sm-1 m-0 p-0">
-                            <span>Ah</span>
-                        </div>
-                    </div>
-
-                    <div class="form-group row mt-2">  
-                        <label for="trigger_action" class="col-sm-9 col-form-label">Charge type</label>
-                        <div class="col-sm-3">
-                        <select id="trigger_action" class="form-control">
-                            <option selected>Accelerated</option>
-                            <option>...</option>
-                          </select>
-                        </div>  
+                    <div class="alert alert-success" *ngIf="message">{{message}}</div>
+                    <form (ngSubmit)="!batteryForm.invalid && saveBattery()" #batteryForm="ngForm">
+                        <div class="form-group row text-center mt-2">
+                            <h6 class="card-subtitle mb-2 col-sm-12 col-form-label">Battery Settings</h6>
                         </div>
 
-                        <div class="form-group row">  
-                            <label for="trigger_action" class="col-sm-9 col-form-label">Helth Check</label>
+                        <div class="from group row mt-2">
+                            <label class="col-sm-9 col-form-label" for="batterycapacity">Battery Capacity</label>
+                            <div class="col-sm-2">
+                                <input type="number" class="form-control" name="battery_capacity"
+                                    [(ngModel)]="batterylist.capacity" id="batterycapacity" placeholder="12">
+                            </div>
+                            <div class="col-sm-1 m-0 p-0">
+                                <span>Ah</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group row mt-2">
+                            <label for="charge_type" class="col-sm-9 col-form-label">Charge type</label>
                             <div class="col-sm-3">
-                            <select id="trigger_action" class="form-control">
-                                <option selected>Monthly</option>
-                                <option>...</option>
-                              </select>
-                            </div>  
+                                <select id="charge_type" name="charge_type" class="form-control">
+                                    <option value="batterylist.chargingMode" selected>Accelerated</option>
+                                </select>
                             </div>
-
-                            <div class="from-group row">
-                                <label class="col-sm-9 col-form-label" for="HelthCheckTime">Helth Check Time</label>
-                                <div class="col-sm-3">
-                                    <input type="time" class="form-control" id="HelthCheckTime" placeholder="Helth Check Time">
-                                </div>
-                            </div>
-
-                            <div class="from-group row mt-2">
-                                <label class="col-sm-8 col-form-label" for="BatteryInstalledTime">Battery Installed Time</label>
-                                <div class="col-sm-4">
-                                    <input type="datetime-local" class="form-control" id="BatteryInstalledTime" placeholder="Battery Installed Time"
-                                    min="2018-06-07T00:00" max="2018-06-14T00:00">
-                                </div>
-                            </div>
-
-                    <div class="form-group row mt-2">
-                        <label for="checkbox" class="col-sm-9 col-form-label">New Battery Installed</label>
-                        <div class="col-sm-3">
-                            <label class="switch" for="checkbox">
-                                <input class="form-control" type="checkbox" id="checkbox" />
-                                <div class="slider round"></div>
-                            </label>
                         </div>
-                      </div>
-  
+
+                        <div class="form-group row">
+                            <label for="helth_check" class="col-sm-9 col-form-label">Helth Check</label>
+                            <div class="col-sm-3">
+                                <select id="helth_check" name="helth_check" class="form-control">
+                                    <option value="batterylist.healthCheckMode" selected>Monthly</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="from-group row">
+                            <label class="col-sm-9 col-form-label" for="HelthCheckTime">Helth Check Time</label>
+                            <div class="col-sm-3">
+                                <input type="time" class="form-control" name="helthchecktime" id="HelthCheckTime"
+                                    [ngModel]="batterylist.healthCheckTime | date:'HH:mm:ss'"
+                                    (ngModelChange)="batterylist.healthCheckTime = $event"
+                                    placeholder="Helth Check Time">
+                            </div>
+                        </div>
+
+                        <div class="from-group row mt-2">
+                            <label class="col-sm-8 col-form-label" for="BatteryInstalledTime">Battery Installed
+                                Time</label>
+                            <div class="col-sm-4">
+                                <input datetime="yyyy-MM-dd HH:mm:ss" class="form-control" name="battery_installed_time"
+                                    id="BatteryInstalledTime"
+                                    [ngModel]="batterylist.installTime | date:'yyyy-MM-dd HH:mm:ss'"
+                                    (ngModelChange)="batterylist.installTime = $event"
+                                    placeholder="Battery Installed Time" min="2018-06-07T00:00" max="2018-06-14T00:00">
+                            </div>
+                        </div>
+
+                        <div class="form-group row mt-2">
+                            <label for="checkbox" class="col-sm-9 col-form-label">New Battery Installed</label>
+                            <div class="col-sm-3">
+                                <label class="switch" for="checkbox">
+                                    <input class="form-control" name="new_battery_installed"
+                                        [(ngModel)]="batterylist.state" type="checkbox" id="checkbox" />
+                                    <div class="slider round"></div>
+                                </label>
+                            </div>
+                        </div>
+
                         <div class="from group row">
                             <label class="col-sm-9 col-form-label" for="expiration">Expiration Reminder</label>
                             <div class="col-sm-2 m-0">
-                                <input type="number" class="form-control" id="expiration" placeholder="30">
+                                <input type="number" class="form-control" id="expiration" name="expiration"
+                                    [(ngModel)]="batterylist.expiryTime" placeholder="30">
                             </div>
                             <div class="col-sm-1 m-0 p-0">
                                 <span>months</span>
                             </div>
                         </div>
-  
+
                         <div class="form group row justify-content-center">
-                          <button mat-raised-button color="primary">Save</button>
+                            <button type="submit" mat-raised-button color="primary">Save</button>
                         </div>
-                </form>
-              </div>
+                    </form>
+                </div>
             </div>
-      </div>
+        </div>
     </div>
-  </div>
+</div>

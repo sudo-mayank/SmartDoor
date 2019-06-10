@@ -1,58 +1,64 @@
 <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-          <div class="card mt-2 p-2">
-              <div class="card-header">
-                Output Settings
-              </div>
-              <div class="body">
-                <form>
-                    <div class="form-group row text-center mt-2">
-                        <h6 class="card-subtitle mb-2 col-sm-12 col-form-label">Relay 1</h6>
-                    </div>
-                    <div class="form-group row mt-2">
-                        <label for="checkbox" class="col-sm-9 col-form-label">Enabled</label>
-                        <div class="col-sm-3">
-                            <label class="switch" for="checkbox">
-                                <input class="form-control" type="checkbox" id="checkbox" />
-                                <div class="slider round"></div>
-                            </label>
-                        </div>
-                      </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card mt-2 p-2">
+        <div class="card-header">
+          Output Settings
+        </div>
+        <div class="body">
+          <div class="alert alert-warning" *ngIf="outputForm.dirty && outputForm.invalid">Please enter the valid data
+          </div>
 
-                      <div class="form-group row mt-2">
-                          <label for="checkbox1" class="col-sm-9 col-form-label">Normally Energised</label>
-                          <div class="col-sm-3">
-                              <label class="switch" for="checkbox1">
-                                  <input class="form-control" type="checkbox" id="checkbox1" />
-                                  <div class="slider round"></div>
-                              </label>
-                          </div>
-                        </div>
-  
-                      <div class="form-group row">  
-                        <label for="trigger_action" class="col-sm-9 col-form-label">Trigger actions</label>
-                        <div class="col-sm-3">
-                        <select id="trigger_action" class="form-control">
-                            <option selected>2 Selected</option>
-                            <option>...</option>
-                          </select>
-                        </div>  
-                        </div>
-  
-                        <div class="from group row mt-2">
-                            <label class="col-sm-9 col-form-label" for="Timer">Timer</label>
-                            <div class="col-sm-3">
-                                <input type="time" class="form-control" id="Timer" placeholder="Timer">
-                            </div>
-                        </div>
-  
-                        <div class="form group row justify-content-center">
-                          <button mat-raised-button color="primary">Save</button>
-                        </div>
-                </form>
+          <div class="alert alert-success" *ngIf="message">{{message}}</div>
+          <form (ngSubmit)="!outputForm.invalid && saveOutput()" #outputForm="ngForm">
+            <div class="form-group row text-center mt-2">
+              <h6 class="card-subtitle mb-2 col-sm-12 col-form-label">Relay 1</h6>
+            </div>
+            <div class="form-group row mt-2">
+              <label for="checkbox" class="col-sm-9 col-form-label">Enabled</label>
+              <div class="col-sm-3">
+                <label class="switch" for="checkbox">
+                  <input class="form-control" type="checkbox" id="checkbox" name="enabled"
+                    [(ngModel)]="outputlist.state" />
+                  <div class="slider round"></div>
+                </label>
               </div>
             </div>
+
+            <div class="form-group row mt-2">
+              <label for="checkbox1" class="col-sm-9 col-form-label">Normally Energised</label>
+              <div class="col-sm-3">
+                <label class="switch" for="checkbox1">
+                  <input class="form-control" type="checkbox" id="checkbox1" name="energised"
+                    [(ngModel)]="outputlist.energized" />
+                  <div class="slider round"></div>
+                </label>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label for="trigger_action" class="col-sm-9 col-form-label">Trigger actions</label>
+              <div class="col-sm-3">
+                <select id="trigger_action" class="form-control" name="trigger_action">
+                  <option selected value="outputlist.triggerReason">{{outputlist.triggerReason}} Selected</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="from group row mt-2">
+              <label class="col-sm-9 col-form-label" for="Timer">Timer</label>
+              <div class="col-sm-3">
+                <input type="text" class="form-control" id="Timer" name="timer" [(ngModel)]="outputlist.actionTime"
+                  placeholder="Timer">
+              </div>
+            </div>
+
+            <div class="form group row justify-content-center">
+              <button type="submit" mat-raised-button color="primary">Save</button>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   </div>
+</div>

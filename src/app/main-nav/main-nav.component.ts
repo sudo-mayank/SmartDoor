@@ -7,7 +7,7 @@ import { WelcomeDataService } from '../service/data/welcome-data.service';
 import { adslist } from '../service/classes/adslist';
 import { ActivatedRoute } from '@angular/router';
 import { SharedDataService } from '../service/data/shared-data.service';
-
+export const USER_LIST_CHECK = 'user_right_navbar_check';
 @Component({
   selector: 'app-main-nav',
   templateUrl: './main-nav.component.html',
@@ -78,6 +78,7 @@ export class MainNavComponent implements OnInit {
   getmenulist(adsid, dcdid) {
     this.datalist = [adsid, dcdid];
     this.shareddata.changedata(this.datalist);
+    sessionStorage.setItem(USER_LIST_CHECK, this.datalist[0]),
     console.log('data sent');
   }
 

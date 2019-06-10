@@ -1,79 +1,80 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-        <div class="card mt-2 p-2">
-            <div class="card-header">
-              Input Settings
-            </div>
-            <div class="body">
-              <form>
-                  <div class="form-group row text-center mt-2">
-                      <h6 class="card-subtitle mb-2 col-sm-12 col-form-label">Input 1</h6>
-                  </div>
-                  <div class="form-group row mt-2">
-                      <label for="checkbox" class="col-sm-9 col-form-label">Enabled</label>
-                      <div class="col-sm-3">
-                          <label class="switch" for="checkbox">
-                              <input class="form-control" type="checkbox" id="checkbox" />
-                              <div class="slider round"></div>
-                          </label>
-                      </div>
-                    </div>
-
-                    <div class="form-group row">  
-                      <label for="trigger_action" class="col-sm-9 col-form-label">Trigger action</label>
-                      <div class="col-sm-3">
-                      <select id="trigger_action" class="form-control">
-                          <option selected>2 Selected</option>
-                          <option>...</option>
-                        </select>
-                      </div>  
-                      </div>
-
-                      <div class="form-group row">
-                              <label class="col-sm-9 col-form-label" for="sensor_mode">Sensor Mode</label>
-                              <div class="col-sm-3">
-                                  <select class="custom-select mr-sm-2" id="sensor_mode">
-                                      <option selected>Normally Open</option>
-                                      <option value="1">One</option>
-                                      <option value="2">Two</option>
-                                      <option value="3">Three</option>
-                                    </select>
-                              </div>
-                      </div>
-
-                      <div class="form-group row">
-                          <label class="col-sm-9 col-form-label" for="sensor_mode">Supervision Mode</label>
-                          <div class="col-sm-3">
-                              <select class="custom-select mr-sm-2" id="sensor_mode">
-                                  <option selected>Two Resistor</option>
-                                  <option value="1">One</option>
-                                  <option value="2">Two</option>
-                                  <option value="3">Three</option>
-                                </select>
-                          </div>
-                      </div>
-
-                      <div class="from-group row">
-                          <label class="col-sm-9 col-form-label" for="R1">R1</label>
-                          <div class="col-sm-3">
-                              <input type="text" class="form-control" id="R1" placeholder="R1">
-                          </div>
-                      </div>
-
-                      <div class="from-group row mt-2">
-                          <label class="col-sm-9 col-form-label" for="R2">R2</label>
-                          <div class="col-sm-3">
-                              <input type="text" class="form-control" id="R2" placeholder="R2">
-                          </div>
-                      </div>
-
-                      <div class="form-group row justify-content-center">
-                        <button mat-raised-button color="primary">Save</button>
-                      </div>
-              </form>
-            </div>
+      <div class="card mt-2 p-2">
+        <div class="card-header">
+          Input Settings
+        </div>
+        <div class="body">
+          <div class="alert alert-warning" *ngIf="inputForm.dirty && inputForm.invalid">Please enter the valid data
           </div>
+
+          <div class="alert alert-success" *ngIf="message">{{message}}</div>
+
+          <form (ngSubmit)="!inputForm.invalid && saveInput()" #inputForm="ngForm">
+            <div class="form-group row text-center mt-2">
+              <h6 class="card-subtitle mb-2 col-sm-12 col-form-label">Input 1</h6>
+            </div>
+            <div class="form-group row mt-2">
+              <label for="checkbox" class="col-sm-9 col-form-label">Enabled</label>
+              <div class="col-sm-3">
+                <label class="switch" for="checkbox">
+                  <input class="form-control" name="enabled" type="checkbox" id="checkbox"
+                    [checked]="inputlist.state" (change)="inputlist.state != inputlist.state"/>
+                  <div class="slider round"></div>
+                </label>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label for="trigger_action" class="col-sm-9 col-form-label">Trigger action</label>
+              <div class="col-sm-3">
+                <select id="trigger_action" name="triggeraction" class="form-control">
+                  <option value="inputlist.triggerReason" selected>{{inputlist.triggerReason}} Selected</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label class="col-sm-9 col-form-label" for="sensor_mode">Sensor Mode</label>
+              <div class="col-sm-3">
+                <select class="custom-select mr-sm-2" name="sensor_mode" id="sensor_mode">
+                  <option value="inputlist.sensorMmode" selected>Normally Open</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label class="col-sm-9 col-form-label" for="supervision_mode">Supervision Mode</label>
+              <div class="col-sm-3">
+                <select class="custom-select mr-sm-2" name="supervision_mode" id="supervision_mode">
+                  <option value="inputlist.supervisionMode" selected>Two Resistor</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="from-group row">
+              <label class="col-sm-9 col-form-label" for="R1">R1</label>
+              <div class="col-sm-3">
+                <input type="text" #R1="ngModel" [(ngModel)]='inputlist.resistorOne' class="form-control" name="r1" id="R1" required minlength="1"
+                  placeholder="R1">
+              </div>
+            </div>
+
+            <div class="from-group row mt-2">
+              <label class="col-sm-9 col-form-label" for="R2">R2</label>
+              <div class="col-sm-3">
+                <input type="text" #R2="ngModel" class="form-control" name="r2" id="R2" required minlength="1"
+                  placeholder="R2" [(ngModel)]='inputlist.resistorTwo'>
+              </div>
+            </div>
+
+            <div class="form-group row justify-content-center">
+              <button type="submit" mat-raised-button color="primary">Save</button>
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
   </div>
 </div>

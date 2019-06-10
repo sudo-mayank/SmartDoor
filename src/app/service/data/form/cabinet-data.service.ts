@@ -16,14 +16,14 @@ export class CabinetDataService {
   constructor(private http: HttpClient) { }
 
   getcabinetalllist(dcdId, adId) {
-    return this.http.get(`${API_URL}/api/dcd/${dcdId}/ad/${adId}/output?max=2&offset=0`);
+    return this.http.get(`${API_URL}/api/dcd/${dcdId}/ad/${adId}/cabinet?max=2&offset=0`);
   }
 
-  getoutputlist(dcdId, adId, id) {
-    return this.http.get(`${API_URL}/api/dcd/${dcdId}/ad/${adId}/output/${id}`);
+  getcabinetlist(dcdId, adId, id) {
+    return this.http.get(`${API_URL}/api/dcd/${dcdId}/ad/${adId}/cabinet/${id}`);
   }
 
-  putoutputlist(dcdId, adId, id, outputlist) {
-    return this.http.put(`${API_URL}/api/dcd/${dcdId}/ad/${adId}/output/${id}`, outputlist, httpOptions);
+  putcabinetlist(dcdId, adId, id, cabinetlist) {
+    return this.http.put(`${API_URL}/api/dcd/${dcdId}/ad/${adId}/cabinet/${id}`, cabinetlist, httpOptions);
   }
 }

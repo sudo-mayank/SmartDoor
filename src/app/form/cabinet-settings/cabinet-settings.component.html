@@ -1,60 +1,66 @@
 <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-          <div class="card mt-2 p-2">
-              <div class="card-header">
-                Cabinate Settings
-              </div>
-              <div class="body">
-                <form>
-                    <div class="form-group row text-center mt-2">
-                        <h6 class="card-subtitle mb-2 col-sm-12 col-form-label">Display Settings</h6>
-                    </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card mt-2 p-2">
+        <div class="card-header">
+          Cabinate Settings
+        </div>
+        <div class="body">
+          <div class="alert alert-warning" *ngIf="cabinetForm.dirty && cabinetForm.invalid">Please enter the valid data
+          </div>
 
-                    <div class="from group row mt-2">
-                        <label class="col-sm-9 col-form-label" for="batterycapacity">Display Intensity</label>
-                        <div class="col-sm-3">
-                            <input type="range" id="batterycapacity" name="cowbell" min="0" max="100" value="90" step="10">
-                        </div>
-                    </div>
+          <div class="alert alert-success" *ngIf="message">{{message}}</div>
+          <form (ngSubmit)="!cabinetForm.invalid && saveCabinet()" #cabinetForm="ngForm">
+            <div class="form-group row text-center mt-2">
+              <h6 class="card-subtitle mb-2 col-sm-12 col-form-label">Display Settings</h6>
+            </div>
 
-                    <div class="form-group row mt-2">  
-                        <label for="trigger_action" class="col-sm-9 col-form-label">Scroll Option</label>
-                        <div class="col-sm-3">
-                        <select id="trigger_action" class="form-control">
-                            <option selected>No Scroll</option>
-                            <option>...</option>
-                          </select>
-                        </div>  
-                        </div>
-
-                            <div class="from-group row">
-                                <label class="col-sm-9 col-form-label" for="scrollscreentime">Screen Scroll Time</label>
-                                <div class="col-sm-3">
-                                    <input type="time" class="form-control" id="scrollscreentime" placeholder="">
-                                </div>
-                            </div>
-
-                            <div class="form-group row text-center mt-2">
-                                <h6 class="card-subtitle mb-2 col-sm-12 col-form-label">Alram Settings</h6>
-                            </div>
-
-                            <div class="form-group row mt-2">  
-                                <label for="trigger_action" class="col-sm-9 col-form-label">Scroll Option</label>
-                                <div class="col-sm-3">
-                                <select id="trigger_action" class="form-control">
-                                    <option selected>No Scroll</option>
-                                    <option>...</option>
-                                  </select>
-                                </div>  
-                              </div>
-  
-                        <div class="form group row justify-content-center">
-                          <button mat-raised-button color="primary">Save</button>
-                        </div>
-                </form>
+            <div class="from group row mt-2">
+              <label class="col-sm-9 col-form-label" for="batterycapacity">Display Intensity
+                {{cabinetlist.displayintensity}}</label>
+              <div class="col-sm-3">
+                <input type="range" id="batterycapacity" name="displayIntensity"
+                  [ngModel]="cabinetlist.displayintensity" (ngModelChange)="cabinetlist.displayintensity = $event"
+                  min="0" max="100" step="10">
               </div>
             </div>
+
+            <div class="form-group row mt-2">
+              <label for="trigger_action" class="col-sm-9 col-form-label">Scroll Option</label>
+              <div class="col-sm-3">
+                <select id="trigger_action" name="scrolloption" class="form-control">
+                  <option value="" selected>No Scroll</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="from-group row">
+              <label class="col-sm-9 col-form-label" for="scrollscreentime">Screen Scroll Time</label>
+              <div class="col-sm-3">
+                <input type="text" class="form-control" name="screenscrolltime" [(ngModel)]="cabinetlist.scrollTime"
+                  id="scrollscreentime" placeholder="">
+              </div>
+            </div>
+
+            <div class="form-group row text-center mt-2">
+              <h6 class="card-subtitle mb-2 col-sm-12 col-form-label">Alram Settings</h6>
+            </div>
+
+            <div class="form-group row mt-2">
+              <label for="trigger_action" class="col-sm-9 col-form-label">Alrem Tone Selection</label>
+              <div class="col-sm-3">
+                <select id="trigger_action" class="form-control">
+                  <option selected>Steady High</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form group row justify-content-center">
+              <button type="submit" mat-raised-button color="primary">Save</button>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   </div>
+</div>

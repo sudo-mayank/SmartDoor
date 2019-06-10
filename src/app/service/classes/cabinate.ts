@@ -1,4 +1,4 @@
-export class cabinate{
+export class Cabinet {
     id: number;
     adId: number;
     type: number;

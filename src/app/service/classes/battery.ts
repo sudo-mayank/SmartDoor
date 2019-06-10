@@ -1,4 +1,4 @@
-export class battery{
+export class Battery {
 id: number;
 adId: number;
 type: number;

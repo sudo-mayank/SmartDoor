@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { USER_LIST_CHECK } from './main-nav/main-nav.component';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'smartdoor';
+
+  getnavlist() {
+    return sessionStorage.getItem(USER_LIST_CHECK);
+  }
 }
+
+
