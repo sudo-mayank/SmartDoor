@@ -13,7 +13,7 @@ import { InputList } from 'src/app/service/classes/inputlist';
 export class InputSettingsComponent implements OnInit {
 
   inputlist: any;
-  datalist: InputList;
+  // datalist: InputList;
   message: string;
   dcdId: number;
   adId: number;

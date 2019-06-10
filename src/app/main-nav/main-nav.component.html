@@ -7,7 +7,7 @@
       <div *ngFor="let list of lists" class="mt-5 ml-3">
         <div ngbDropdown class="d-inline-block">
           <button mat-raised-button (click)="getadslist(list.id)" color="primary" id="dropdownBasic1"
-            ngbDropdownToggle>{{list.name}}</button>
+            ngbDropdownToggle>{{list.name}} {{list.id}}</button>
           <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
             <button mat-button (click)="getmenulist(ads.id,list.id)" *ngFor="let ads of adslists"
               ngbDropdownItem>{{ads.name}}</button>
